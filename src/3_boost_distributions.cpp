@@ -23,4 +23,21 @@
 21. Triangular Distribution
 22. Weibull Distribution
 23. Uniform Distribution
+
+On each distribution, we can apply the usual operations, such as calculation of the
+cumulative distribution value at a given point x. The following operations are available with
+corresponding syntax
+
+cumulative distribution function: cdf(distribution,x)
+density: pdf(distribution,x)
+inverse CDF: quantile(distribution,x)
+complementary CDF: cdf(complement(distribution,x))
+Mean: mode(distribution)
+variance: variance(distribution)
+st. deviation: standard_deviation(distribution)
+skew: skewness(distribution)
+kurtosis: kurtosis(distribution)
+excess kurtosis: kurtosis_excess(distribution)
+
 */
+
