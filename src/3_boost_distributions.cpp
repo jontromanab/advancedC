@@ -62,6 +62,34 @@ void distributionFn(){
   std::cout<<"Right sup: "<<sup.second<<std::endl;
 }
 
+void distributionFn2()
+{
+  double leftBound = 0.0, rightBound = 2.0;
+  boost::math::uniform_distribution<> d1(leftBound, rightBound);
+
+  double numTrials = 1.0, probTrial = 0.2;
+  boost::math::binomial_distribution<> d2(numTrials, probTrial);
+
+  double degFreedom =20;
+  boost::math::students_t_distribution<> d3(degFreedom);
+  boost::math::chi_squared_distribution<> d4(degFreedom);
+
+  double mean = 0.0, var = 0.20;
+  boost::math::lognormal_distribution<> d5(mean, var);
+  boost::math::cauchy_distribution<> d6(mean, var);
+
+  double degFreedom1 =20, degFreedom2 =35;
+  boost::math::fisher_f_distribution<> d7(degFreedom1, degFreedom2);
+
+  double noenCentPar = 0.2;
+  boost::math::non_central_chi_squared_distribution<> d8(degFreedom1, degFreedom2);
+
+  double arrivRate = 0.2;
+  boost::math::poisson_distribution<> d9(arrivRate);
+  boost::math::exponential_distribution<> d10(arrivRate);
+}
+
+
 int main(){
   distributionFn();
   return 0;
