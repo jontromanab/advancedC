@@ -17,3 +17,6 @@ target_link_libraries( 1_boost_macro LINK_PUBLIC ${Boost_LIBRARIES} )
 
 add_executable(2_shared_pointer src/2_boost_shared_pointer.cpp )
 target_link_libraries(2_shared_pointer LINK_PUBLIC ${Boost_LIBRARIES} )
+
+add_executable(3_boost_distributions src/3_boost_distributions.cpp )
+target_link_libraries(3_boost_distributions LINK_PUBLIC ${Boost_LIBRARIES} )
