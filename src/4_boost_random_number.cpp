@@ -30,6 +30,7 @@ lognormal_distribution
 
 #include<iostream>
 #include<boost/random.hpp>
+#include<boost/foreach.hpp>
 
 
 //generate discrete uniform random numbers in the set {1....6} with Mersenne-Twister
@@ -87,11 +88,27 @@ void randomFunc3(){
   std::cout<<cauchy()<<std::endl;
 }
 
+//generate a random vector with a unit length with dimension 5 by unit sphere distribution
+void randomFunc4()
+{
+  unsigned long seed = 24061;
+  boost::mt19937 rng(seed);
+  boost::uniform_on_sphere<double, std::vector<double>> myUn(5);
+  boost::variate_generator<boost::mt19937&, boost::uniform_on_sphere<double, std::vector<double>>> unSphere(rng, myUn);
+  std::vector<double> res = unSphere();
+  std::cout<<"----------vector-----------"<<std::endl;
+  BOOST_FOREACH(double x, res) std::cout<<x<<std::endl;
+  double sum = 0.0;
+  BOOST_FOREACH(double x, res) sum+=x*x;
+  std::cout<<"----------------------------------"<<std::endl;
+  std::cout<<"Vector Length: "<<std::sqrt(sum)<<std::endl;
+}
 
 int main(){
 
   randomFunc1();
   randomFunc2();
   randomFunc3();
+  randomFunc4();
   return 0;
 }
