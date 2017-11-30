@@ -20,3 +20,6 @@ target_link_libraries(2_shared_pointer LINK_PUBLIC ${Boost_LIBRARIES} )
 
 add_executable(3_boost_distributions src/3_boost_distributions.cpp )
 target_link_libraries(3_boost_distributions LINK_PUBLIC ${Boost_LIBRARIES} )
+
+add_executable(4_boost_random_number src/4_boost_random_number.cpp )
+target_link_libraries(4_boost_random_number LINK_PUBLIC ${Boost_LIBRARIES} )

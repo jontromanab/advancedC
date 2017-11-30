@@ -1,4 +1,4 @@
-/* There are several kind of distribtions present in Boost
+/*Ther are several kind of distribtions present in Boost
 
 1. Bernoulli Distribution
 2. Beta Distribution
