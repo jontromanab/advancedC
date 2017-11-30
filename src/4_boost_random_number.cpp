@@ -63,10 +63,35 @@ void randomFunc2(){
   std::cout<<unnorm()<<std::endl;
 }
 
+//repeat random number series by resetting its state
+// generate random variables following the Cauchy distribution. After generating 3 random variables
+// we set the random number generator to the initial state by calling rng.seed(seed)
+void randomFunc3(){
+  //create seed
+  unsigned long seed = 12411;
+  //produces general pseudo random number with MT
+  boost::mt19937 rng(seed);
+  //distribution that maps to 1....6
+  boost::cauchy_distribution<> cdist;
+  //connects mapping with random series
+  boost::variate_generator<boost::mt19937&, boost::cauchy_distribution<> > cauchy(rng, cdist);
+
+  std::cout<<cauchy()<<std::endl;
+  std::cout<<cauchy()<<std::endl;
+  std::cout<<cauchy()<<std::endl;
+
+  rng.seed(seed);
+  std::cout<<"----------"<<std::endl;
+  std::cout<<cauchy()<<std::endl;
+  std::cout<<cauchy()<<std::endl;
+  std::cout<<cauchy()<<std::endl;
+}
+
 
 int main(){
 
   randomFunc1();
   randomFunc2();
+  randomFunc3();
   return 0;
 }
