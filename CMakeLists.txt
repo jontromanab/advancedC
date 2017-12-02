@@ -26,3 +26,6 @@ target_link_libraries(4_boost_random_number LINK_PUBLIC ${Boost_LIBRARIES} )
 
 add_executable(5_boost_function src/5_boost_function.cpp )
 target_link_libraries(5_boost_function LINK_PUBLIC ${Boost_LIBRARIES} )
+
+add_executable(6_boost_bind src/6_boost_bind.cpp )
+target_link_libraries(6_boost_bind LINK_PUBLIC ${Boost_LIBRARIES} )

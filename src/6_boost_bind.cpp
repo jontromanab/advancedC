@@ -1,0 +1,6 @@
+/*
+The bind class is able to bind any function object argument to a specific value or route input
+arguments into arbitary positions.
+
+
+*/
