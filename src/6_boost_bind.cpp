@@ -27,3 +27,39 @@ indPmOne(x)
 
 
 */
+
+#include<boost/bind.hpp>
+#include<boost/function.hpp>
+#include<iostream>
+
+double indicatorFunc(const double& x, const double& a, const double& b){
+  if(x>=a && x<=b) return 1.0;
+  else return 0.0;
+}
+
+void testingBind1(){
+  double a=-1.0, b = 1.0;
+  boost::function<double (double)> ind;
+  ind = boost::bind(indicatorFunc,_1, a,b);
+  std::cout<<ind(0.5)<<std::endl;
+  std::cout<<ind(5.0)<<std::endl;
+}
+
+int main(){
+  testingBind1();
+  return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
