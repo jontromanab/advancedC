@@ -33,6 +33,8 @@ target_link_libraries(6_boost_bind LINK_PUBLIC ${Boost_LIBRARIES} )
 add_executable(7_boost_any src/7_boost_any.cpp )
 target_link_libraries(7_boost_any LINK_PUBLIC ${Boost_LIBRARIES} )
 
-
 add_executable(8_boost_optional src/8_boost_optional.cpp )
 target_link_libraries(8_boost_optional LINK_PUBLIC ${Boost_LIBRARIES} )
+
+add_executable(9_boost_serialization src/9_boost_serialization.cpp )
+target_link_libraries(9_boost_serialization LINK_PUBLIC ${Boost_LIBRARIES} -lboost_serialization )
