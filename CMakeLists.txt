@@ -38,3 +38,6 @@ target_link_libraries(8_boost_optional LINK_PUBLIC ${Boost_LIBRARIES} )
 
 add_executable(9_boost_serialization src/9_boost_serialization.cpp )
 target_link_libraries(9_boost_serialization LINK_PUBLIC ${Boost_LIBRARIES} -lboost_serialization )
+
+add_executable(9_boost_serialization_open src/9_boost_serialization_open.cpp )
+target_link_libraries(9_boost_serialization_open LINK_PUBLIC ${Boost_LIBRARIES} -lboost_serialization )

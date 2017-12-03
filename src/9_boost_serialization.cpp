@@ -25,14 +25,15 @@ as we are interested in bin serialization, we will include
 #include<sstream>
 #include<boost/timer.hpp>
 
-void testingSerialization(){
+
+void testingSerialization1(){
   //start timer
   boost::timer t;
   //random number generator setup
   unsigned long seed = 89210;
   std::stringstream stream; stream<<seed;
   //create an open an achive for output
-  std::string filename("/home/abhi/advancedD");
+  std::string filename("/home/abhi/advancedC/");
   filename+="normal_nt_"+stream.str()+".bin";
   //
   std::ofstream ostr(filename.c_str(), std::ios::binary);
@@ -54,6 +55,6 @@ void testingSerialization(){
 
 
 int main(){
-  testingSerialization();
+  testingSerialization1();
   return 0;
 }
