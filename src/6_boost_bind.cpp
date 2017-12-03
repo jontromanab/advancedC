@@ -45,8 +45,18 @@ void testingBind1(){
   std::cout<<ind(5.0)<<std::endl;
 }
 
+//if we want some other order of variables
+void testingBind2(){
+  double x = 1.01, a = -1.0, b = 1.0;
+  std::cout<<"Original function: "<<indicatorFunc(x, a,b)<<std::endl;
+  boost::function<double (double, double, double) > indReordered;
+  indReordered = boost::bind(indicatorFunc, _3,_1,_2);//(a,b,x)
+  std::cout<<"Reordered arrangements: "<<indReordered(a,b,x)<<std::endl;
+}
+
 int main(){
   testingBind1();
+  testingBind2();
   return 0;
 }
 
