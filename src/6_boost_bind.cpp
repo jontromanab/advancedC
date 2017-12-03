@@ -30,6 +30,7 @@ indPmOne(x)
 
 #include<boost/bind.hpp>
 #include<boost/function.hpp>
+#include<boost/math/distributions.hpp>
 #include<iostream>
 
 double indicatorFunc(const double& x, const double& a, const double& b){
@@ -54,9 +55,35 @@ void testingBind2(){
   std::cout<<"Reordered arrangements: "<<indReordered(a,b,x)<<std::endl;
 }
 
+
+//binding class member function
+class NormalClass{
+public:
+  NormalClass(){}
+  double normalPdf(const double& x, const double& mean, const double& std){
+    boost::math::normal_distribution<> d(mean, std);
+    return pdf(d,x);
+  }
+  double normalCdf(const double& x, const double& mean, const double& std){
+    boost::math::normal_distribution<> d(mean,std);
+    return cdf(d,x);
+  }
+};
+
+void testingBind3(){
+  boost::function<double (double)> stdNd, stdNcumm;
+  NormalClass nc;
+  stdNd = boost::bind(&NormalClass::normalPdf, &nc, _1, 0.0, 1.0);
+  stdNcumm = boost::bind(&NormalClass::normalCdf, &nc, _1, 0.0, 1.0);
+
+  std::cout<<stdNd(1.1)<<std::endl;
+  std::cout<<stdNcumm(0.0)<<std::endl;
+
+}
 int main(){
   testingBind1();
   testingBind2();
+  testingBind3();
   return 0;
 }
 
