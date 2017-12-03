@@ -6,6 +6,8 @@ The any class can take any value. We can assign any variable=> a double, string,
 #include<boost/any.hpp>
 #include<vector>
 #include<iostream>
+#include<string>
+#include<map>
 
 void callAny(boost::any x);
 
@@ -48,9 +50,20 @@ void AnyTesting2(){
   if(ptrMyInt == NULL) std::cout<<"Cast failed"<<std::endl;
 }
 
+//The any class can be very useful for setting up property sets of objects.
+void AnyTesting3(){
+  enum BarrierType{DownAndOut, UpAndIn, DownAndIn, UpAndOut};
+  std::map<std::string, boost::any> myPropertySet;
+
+  myPropertySet["domRate"] = 0.003;
+  myPropertySet["forRate"] = 0.031;
+  myPropertySet["Name"] = std::string("Barrier Option");
+  myPropertySet["BarrType"] = BarrierType(DownAndOut);
+}
 
 int main(){
   AnyTesting1();
   AnyTesting2();
+  AnyTesting3();
   return 0 ;
 }
