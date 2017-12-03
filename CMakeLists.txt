@@ -29,3 +29,6 @@ target_link_libraries(5_boost_function LINK_PUBLIC ${Boost_LIBRARIES} )
 
 add_executable(6_boost_bind src/6_boost_bind.cpp )
 target_link_libraries(6_boost_bind LINK_PUBLIC ${Boost_LIBRARIES} )
+
+add_executable(7_boost_any src/7_boost_any.cpp )
+target_link_libraries(7_boost_any LINK_PUBLIC ${Boost_LIBRARIES} )
