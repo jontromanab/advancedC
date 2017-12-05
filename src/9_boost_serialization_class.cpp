@@ -5,6 +5,12 @@
 #include<boost/serialization/vector.hpp>
 #include<boost/foreach.hpp>
 #include<boost/random.hpp>
+#include<boost/bind.hpp>
+#include<fstream>
+#include<ostream>
+#include<sstream>
+#include<boost/archive/text_oarchive.hpp>
+#include<boost/archive/binary_oarchive.hpp>
 
 class SimpleGenericMonteCarloClass{
 private:
@@ -54,7 +60,7 @@ double discountedCallpayoff(double assetvalue, double strike, double rd, double 
 }
 
 double discountedPutPayoff(double assetvalue, double strike, double rd, double tau){
-  return res = std::max(strike - assetvalue, 0.0)* std::exp(-rd*tau);
+  double res = std::max(strike - assetvalue, 0.0)* std::exp(-rd*tau);
   return res;
 }
 
@@ -66,6 +72,7 @@ void testingSerialization1(){
   pathGen = boost::bind(gdmpath, spot, rd, rf, vol, tau, _1);
   discountedPayoff = boost::bind(discountedCallpayoff, _1, strike, rd, tau);
   SimpleGenericMonteCarloClass mc(numSims, seed);
+
 
   mc.performsimulation(pathGen, discountedPayoff);
   std::string filenameTxt("/home/abhi/advancedC/monteCarloTest.txt");
@@ -84,5 +91,6 @@ void testingSerialization1(){
 }
 
 int main(){
+  testingSerialization1();
   return 0;
 }
