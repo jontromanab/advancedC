@@ -30,8 +30,8 @@ target_link_libraries(5_boost_function LINK_PUBLIC ${Boost_LIBRARIES} )
 add_executable(6_boost_bind src/6_boost_bind.cpp )
 target_link_libraries(6_boost_bind LINK_PUBLIC ${Boost_LIBRARIES} )
 
-add_executable(7_boost_any src/7_boost_any.cpp )
-target_link_libraries(7_boost_any LINK_PUBLIC ${Boost_LIBRARIES} )
+#add_executable(7_boost_any src/7_boost_any.cpp )
+#target_link_libraries(7_boost_any LINK_PUBLIC ${Boost_LIBRARIES} )
 
 add_executable(8_boost_optional src/8_boost_optional.cpp )
 target_link_libraries(8_boost_optional LINK_PUBLIC ${Boost_LIBRARIES} )
@@ -41,3 +41,6 @@ target_link_libraries(9_boost_serialization LINK_PUBLIC ${Boost_LIBRARIES} -lboo
 
 add_executable(9_boost_serialization_open src/9_boost_serialization_open.cpp )
 target_link_libraries(9_boost_serialization_open LINK_PUBLIC ${Boost_LIBRARIES} -lboost_serialization )
+
+add_executable(9_boost_serialization_class src/9_boost_serialization_class.cpp )
+target_link_libraries(9_boost_serialization_class LINK_PUBLIC ${Boost_LIBRARIES} -lboost_serialization )

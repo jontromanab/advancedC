@@ -93,8 +93,8 @@ void randomFunc4()
 {
   unsigned long seed = 24061;
   boost::mt19937 rng(seed);
-  boost::uniform_on_sphere<double, std::vector<double>> myUn(5);
-  boost::variate_generator<boost::mt19937&, boost::uniform_on_sphere<double, std::vector<double>>> unSphere(rng, myUn);
+  boost::uniform_on_sphere<double, std::vector<double> > myUn(5);
+  boost::variate_generator<boost::mt19937&, boost::uniform_on_sphere<double, std::vector<double> > > unSphere(rng, myUn);
   std::vector<double> res = unSphere();
   std::cout<<"----------vector-----------"<<std::endl;
   BOOST_FOREACH(double x, res) std::cout<<x<<std::endl;

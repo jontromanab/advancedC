@@ -8,7 +8,7 @@
 void testingSerialization2(){
   boost::timer t;
   //create and open a character archive for input
-  std::string filename("/home/abhi/advancedD/");
+  std::string filename("/home/abhi/advancedC/");
   filename+= "normal_nt_89210.bin";
 
   std::ifstream istr(filename.c_str(), std::ios::binary);
