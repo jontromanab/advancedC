@@ -43,6 +43,46 @@ public:
   }
 };
 
+double gdmpath(double spot, double rd, double rf, double vol, double tau, double rn){
+  double res = spot * std::exp((rd-rf-0.5*vol*vol)*tau+vol*std::sqrt(tau)*rn);
+  return res;
+}
+
+double discountedCallpayoff(double assetvalue, double strike, double rd, double tau){
+  double res = std::max(assetvalue - strike, 0.0)*std::exp(-rd*tau);
+  return res;
+}
+
+double discountedPutPayoff(double assetvalue, double strike, double rd, double tau){
+  return res = std::max(strike - assetvalue, 0.0)* std::exp(-rd*tau);
+  return res;
+}
+
+void testingSerialization1(){
+  unsigned long numSims = 1000000, seed = 20424;
+  double spot = 100.0, strike = 102.0, rd = 0.02, rf = 0.03, vol = 0.124, tau = 1.0;
+
+  boost::function<double (double)> pathGen, discountedPayoff;
+  pathGen = boost::bind(gdmpath, spot, rd, rf, vol, tau, _1);
+  discountedPayoff = boost::bind(discountedCallpayoff, _1, strike, rd, tau);
+  SimpleGenericMonteCarloClass mc(numSims, seed);
+
+  mc.performsimulation(pathGen, discountedPayoff);
+  std::string filenameTxt("/home/abhi/advancedC/monteCarloTest.txt");
+  std::string filenameBin("/home/abhi/advancedC/monteCarloTest.bin");
+
+  std::ofstream ostrTxt(filenameTxt.c_str());
+  std::ofstream ostrBin(filenameBin.c_str(), std::ios::binary);
+
+  boost::archive::text_oarchive oaTxt(ostrTxt);
+  boost::archive::binary_oarchive oaBin(ostrBin);
+
+  oaTxt<<mc; oaBin<<mc;
+  ostrTxt.close();
+  ostrBin.close();
+
+}
+
 int main(){
   return 0;
 }
