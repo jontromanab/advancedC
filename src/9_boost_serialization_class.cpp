@@ -12,6 +12,9 @@
 #include<boost/archive/text_oarchive.hpp>
 #include<boost/archive/binary_oarchive.hpp>
 
+#include<boost/archive/text_iarchive.hpp>
+#include<boost/archive/binary_iarchive.hpp>
+
 class SimpleGenericMonteCarloClass{
 private:
   boost::shared_ptr<std::vector<double> >normVec_;
@@ -90,7 +93,26 @@ void testingSerialization1(){
 
 }
 
+void testingSerialization2(){
+  std::string filenameBin("/home/abhi/advancedC/monteCarloTest.bin");
+  std::ifstream istrBin(filenameBin.c_str(), std::ios::binary);
+  boost::archive::binary_iarchive iaBin(istrBin);
+  SimpleGenericMonteCarloClass mc;
+  iaBin>>mc;
+  istrBin.close();
+  std::cout<<"Mean old (call): "<<mc.getMean()<<std::endl;
+  double spot = 100.0, strike =102.0, rd = 0.02, tau = 1.0, rf = 0.03, vol =0.124;
+  boost::function<double (double)> discountedpayoff, pathGen;
+
+  discountedpayoff = boost::bind(discountedPutPayoff, _1, strike, rd, tau);
+  pathGen = boost::bind(gdmpath, spot, rd, rd, vol, tau, _1);
+
+  mc.performsimulation(pathGen, discountedpayoff);
+  std::cout<<"Mean New (put):"<<mc.getMean()<<std::endl;
+}
+
 int main(){
   testingSerialization1();
+  testingSerialization2();
   return 0;
 }
