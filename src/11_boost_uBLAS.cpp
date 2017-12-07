@@ -20,6 +20,8 @@ col size: myMat.size2()
 #include<boost/numeric/ublas/matrix_proxy.hpp>
 #include<boost/numeric/ublas/vector_proxy.hpp>
 
+#include<boost/numeric/ublas/lu.hpp>
+
 
 using namespace boost::numeric::ublas;
 
@@ -94,11 +96,50 @@ void matrixOperation3(){
   std::cout<<"Col: "<<mc<<std::endl;
 }
 
+void matrixOperation4(){
+  matrix<double> myMat(3,3,2.5);
+  myMat(0,0) = myMat(2,2) = 1.0;
+  myMat(0,2) = -3.6; myMat(2,0) = 5.9;
+  std::cout<<"-----------------------------------------"<<std::endl;
+  vector<double> myVec(3,2.0);
+  std::cout<<prod(myMat, myMat)<<std::endl;
+  std::cout<<prod(myMat, myVec)<<std::endl;
+}
+
+void  matrixOperation5 (){
+  // our  goal is to  solve: A*x=b for  the  variable x;
+  matrix <double > A(3,3,-0.5);
+  A(0,0)=A(2 ,2)=1.8;
+  A(0 ,2)= -2.6;A(2 ,0)=1.9;
+  vector <double > b(3 ,0.4); b(0)= -0.3;
+  //  define  copies  of A and b since  the  original
+  //  objects  will be  overwritten  in the  code  !!!
+  matrix <double > A1=A;
+  vector <double > x=b;
+  //  define  the  permuation  matrix , which  is
+  //  actually a vector
+  permutation_matrix <double > P1(A1.size1 ());
+  // do the  LUP  factorization , overwrite  A1
+  // such  that it  summarizes L and U in A1 ,
+  // also , P1 will be  overwritten
+  lu_factorize(A1,P1);
+  //  write x, our  final  solution  with  the
+  //  overwritten  objects  A1 and P1
+  lu_substitute(A1,P1 ,x);
+  std::cout <<"x="<< x << std::endl;
+  //  check if we  receive  our  original b back?
+  std::cout<<"-----------------------------------------"<<std::endl;
+  std::cout  <<"A*x="<< prod(A,x) << std::endl;
+  std::cout  <<"b="<< b<< std::endl;
+}
+
 int main(){
   vecOperation1();
   vecOperation2();
   matrixOperation1();
   matrixOperation2();
   matrixOperation3();
+  matrixOperation4();
+  matrixOperation5();
   return 0;
 }
