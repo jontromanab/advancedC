@@ -1,7 +1,9 @@
 
 //Functionalities to iterate through folders, checking if a folder exists or renaming a folder/file.
 #include<iostream>
-#include<boost/filesystem.hpp>
+#define BOOST_NO_CXX11_SCOPED_ENUMS
+#include <boost/filesystem.hpp>
+#undef BOOST_NO_CXX11_SCOPED_ENUMS
 
 namespace fs  = boost::filesystem;
 
@@ -35,12 +37,56 @@ void testingFileSystem2(){
     std::cout<<"Is file: "<<fs::is_regular_file(itr->path())<<std::endl;
     std::cout<<"File Size :"<<fs::file_size(itr->path())<<std::endl;
     std::cout<<"----------------------------------------------------"<<std::endl;
-    ++itr;
+    itr++;
+  }
+}
+
+void testingFileSystem3(){
+  fs::path originalFile("/home/abhi/advancedC/monteCarloTest.bin");
+  fs::path copiedFile("/home/abhi/advancedC/TestFolder/monteCarloTestCopied.bin");
+  fs::path newFilename("/home/abhi/advancedC/TestFolder/monteCarloTestRenamed.bin");
+
+  fs::directory_iterator itr(copiedFile.parent_path());
+  fs::directory_iterator end_itr;
+
+  while(itr!=end_itr){
+    std::cout<<"Directory files begin: "<<itr->path()<<std::endl;
+    std::cout<<"-----------------------------"<<std::endl;
+    itr++;
+  }
+
+  if(!fs::exists(copiedFile)){
+    fs::copy_file(originalFile, copiedFile);
+  }
+
+  fs::directory_iterator itr1(copiedFile.parent_path());
+  while(itr1!=end_itr){
+    std::cout<<"Directory files after copy: "<<itr1->path()<<std::endl;
+    std::cout<<"---------------------------------"<<std::endl;
+    itr1++;
+  }
+
+  fs::rename(copiedFile, newFilename);
+
+  fs::directory_iterator itr2(copiedFile.parent_path());
+  while(itr2!=end_itr){
+    std::cout<<"Directory files after rename: "<<itr2->path()<<std::endl;
+    std::cout<<"---------------------------------"<<std::endl;
+    itr2++;
+  }
+
+  fs::remove(newFilename);
+  fs::directory_iterator itr3(copiedFile.parent_path());
+  while(itr3!=end_itr){
+    std::cout<<"Directory files after remove: "<<itr3->path()<<std::endl;
+    std::cout<<"---------------------------------"<<std::endl;
+    itr3++;
   }
 }
 
 int main(){
   testingFileSystem1();
   testingFileSystem2();
+  testingFileSystem3();
   return 0;
 }
