@@ -44,3 +44,6 @@ target_link_libraries(9_boost_serialization_open LINK_PUBLIC ${Boost_LIBRARIES} 
 
 add_executable(9_boost_serialization_class src/9_boost_serialization_class.cpp )
 target_link_libraries(9_boost_serialization_class LINK_PUBLIC ${Boost_LIBRARIES} -lboost_serialization )
+
+add_executable(10_boost_filesystem src/10_boost_filesystem.cpp )
+target_link_libraries(10_boost_filesystem LINK_PUBLIC ${Boost_LIBRARIES}  -lboost_system -lboost_filesystem)
