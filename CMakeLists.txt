@@ -47,3 +47,7 @@ target_link_libraries(9_boost_serialization_class LINK_PUBLIC ${Boost_LIBRARIES}
 
 add_executable(10_boost_filesystem src/10_boost_filesystem.cpp )
 target_link_libraries(10_boost_filesystem LINK_PUBLIC ${Boost_LIBRARIES}  -lboost_system -lboost_filesystem)
+
+
+add_executable(11_boost_uBLAS src/11_boost_uBLAS.cpp )
+target_link_libraries(11_boost_uBLAS LINK_PUBLIC ${Boost_LIBRARIES})
