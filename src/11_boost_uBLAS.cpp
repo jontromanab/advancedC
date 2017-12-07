@@ -17,6 +17,10 @@ col size: myMat.size2()
 #include<boost/numeric/ublas/matrix.hpp>
 #include<boost/numeric/ublas/symmetric.hpp>
 
+#include<boost/numeric/ublas/matrix_proxy.hpp>
+#include<boost/numeric/ublas/vector_proxy.hpp>
+
+
 using namespace boost::numeric::ublas;
 
 void vecOperation1(){
@@ -77,10 +81,24 @@ void matrixOperation2(){
   std::cout<<"Scalar Dev: "<<myCorrMat1/multiplier<<std::endl;
 }
 
+void matrixOperation3(){
+  matrix<double> myMat(3,3,2.5);
+  myMat(0,0) = myMat(2,2) = 1.0;
+  myMat(0,2) = -3.6; myMat(2,0) = 5.9;
+
+  matrix_row<matrix<double>> mr(myMat,2);
+  matrix_column<matrix<double>> mc(myMat,2);
+  std::cout<<"-----------------------------------------"<<std::endl;
+  std::cout<<"mat: "<<myMat<<std::endl;
+  std::cout<<"Row: "<<mr<<std::endl;
+  std::cout<<"Col: "<<mc<<std::endl;
+}
+
 int main(){
   vecOperation1();
   vecOperation2();
   matrixOperation1();
   matrixOperation2();
+  matrixOperation3();
   return 0;
 }
