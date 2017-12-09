@@ -10,6 +10,7 @@ INCLUDE_DIRECTORIES( ${Boost_INCLUDE_DIR} )
 
 add_executable(lambda1 src/lambda1.cpp)
 add_executable(const src/const.cpp)
+add_executable(const_and_functions src/const_and_functions)
 
 
 add_executable(1_boost_macro src/1_boost_macro.cpp )
