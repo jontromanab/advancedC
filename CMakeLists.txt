@@ -10,10 +10,11 @@ INCLUDE_DIRECTORIES( ${Boost_INCLUDE_DIR} )
 
 add_executable(lambda1 src/lambda1.cpp)
 add_executable(const src/const.cpp)
-add_executable(const_and_functions src/const_and_functions)
-add_executable(const_logic_bitwise src/const_logic_bitwise)
-add_executable(compiler_generated_function src/compiler_generated_function)
-add_executable(disallow_functions src/disallow_functions)
+add_executable(const_and_functions src/const_and_functions.cpp)
+add_executable(const_logic_bitwise src/const_logic_bitwise.cpp)
+add_executable(compiler_generated_function src/compiler_generated_function.cpp)
+add_executable(disallow_functions src/disallow_functions.cpp)
+add_executable(virtual_destructor src/virtual_destructor.cpp)
 
 
 add_executable(1_boost_macro src/1_boost_macro.cpp )
