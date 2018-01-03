@@ -1,61 +1,38 @@
 cmake_minimum_required(VERSION 2.8)
+
+#if(CMAKE_COMPILER_IS_GNUCXX)
+    #add_definitions(-std=gnu++11)
+#endif()
+
 SET(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} "-std=c++11 -pthread")
-#add_compile_options(-std=c++11)
-project(advancedC)
+#add_compile_options(-std=gnu++11)
 
-FIND_PACKAGE( Boost 1.40 COMPONENTS program_options REQUIRED )
-INCLUDE_DIRECTORIES( ${Boost_INCLUDE_DIR} )
+project(Threading)
 
 
+add_executable(thread_example src/thread_example.cpp)
+add_executable(thread_1 src/thread_1.cpp)
+add_executable(thread_2 src/thread_2.cpp)
+add_executable(thread_3 src/thread_3.cpp)
+add_executable(thread_4 src/thread_4.cpp)
+add_executable(thread_5 src/thread_5.cpp)
+#add_executable(thread_6 src/thread_6.cpp)
 
-add_executable(lambda1 src/lambda1.cpp)
-add_executable(const src/const.cpp)
-add_executable(const_and_functions src/const_and_functions.cpp)
-add_executable(const_logic_bitwise src/const_logic_bitwise.cpp)
-add_executable(compiler_generated_function src/compiler_generated_function.cpp)
-add_executable(disallow_functions src/disallow_functions.cpp)
-add_executable(virtual_destructor src/virtual_destructor.cpp)
-add_executable(exception_in_destructor src/exception_in_destructor.cpp)
-add_executable(virtual_function_in_constructor src/virtual_function_in_constructor.cpp)
+add_executable(threadEx1   src/threadEx1.cpp)
+add_executable(threadEx2   src/threadEx2.cpp)
+add_executable(threadEx3   src/threadEx3.cpp)
+add_executable(threadEx4   src/threadEx4.cpp)
+add_executable(threadEx5   src/threadEx5.cpp)
 
-
-add_executable(1_boost_macro src/1_boost_macro.cpp )
-target_link_libraries( 1_boost_macro LINK_PUBLIC ${Boost_LIBRARIES} )
-
-
-add_executable(2_shared_pointer src/2_boost_shared_pointer.cpp )
-target_link_libraries(2_shared_pointer LINK_PUBLIC ${Boost_LIBRARIES} )
-
-add_executable(3_boost_distributions src/3_boost_distributions.cpp )
-target_link_libraries(3_boost_distributions LINK_PUBLIC ${Boost_LIBRARIES} )
-
-add_executable(4_boost_random_number src/4_boost_random_number.cpp )
-target_link_libraries(4_boost_random_number LINK_PUBLIC ${Boost_LIBRARIES} )
-
-add_executable(5_boost_function src/5_boost_function.cpp )
-target_link_libraries(5_boost_function LINK_PUBLIC ${Boost_LIBRARIES} )
-
-add_executable(6_boost_bind src/6_boost_bind.cpp )
-target_link_libraries(6_boost_bind LINK_PUBLIC ${Boost_LIBRARIES} )
-
-#add_executable(7_boost_any src/7_boost_any.cpp )
-#target_link_libraries(7_boost_any LINK_PUBLIC ${Boost_LIBRARIES} )
-
-add_executable(8_boost_optional src/8_boost_optional.cpp )
-target_link_libraries(8_boost_optional LINK_PUBLIC ${Boost_LIBRARIES} )
-
-add_executable(9_boost_serialization src/9_boost_serialization.cpp )
-target_link_libraries(9_boost_serialization LINK_PUBLIC ${Boost_LIBRARIES} -lboost_serialization )
-
-add_executable(9_boost_serialization_open src/9_boost_serialization_open.cpp )
-target_link_libraries(9_boost_serialization_open LINK_PUBLIC ${Boost_LIBRARIES} -lboost_serialization )
-
-add_executable(9_boost_serialization_class src/9_boost_serialization_class.cpp )
-target_link_libraries(9_boost_serialization_class LINK_PUBLIC ${Boost_LIBRARIES} -lboost_serialization )
-
-add_executable(10_boost_filesystem src/10_boost_filesystem.cpp )
-target_link_libraries(10_boost_filesystem LINK_PUBLIC ${Boost_LIBRARIES}  -lboost_system -lboost_filesystem)
+add_executable(introduction src/introduction.cpp)
+add_executable(thread_management src/thread_management.cpp)
+add_executable(race_condition_mutex src/race_condition_and_mutex.cpp)
+add_executable(deadlock src/deadlock.cpp)
+add_executable(unique src/unique_lock_and_lazy_initialization.cpp)
+add_executable(condition_variable src/condition_variable.cpp)
+add_executable(future_promise src/future_promise.cpp)
+add_executable(callable_objects src/callable_objects.cpp)
+add_executable(packaged_task src/packaged_task.cpp)
+#add_executable(time_constraints src/time_constraints.cpp)
 
 
-add_executable(11_boost_uBLAS src/11_boost_uBLAS.cpp )
-target_link_libraries(11_boost_uBLAS LINK_PUBLIC ${Boost_LIBRARIES})
