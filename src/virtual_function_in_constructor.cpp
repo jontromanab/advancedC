@@ -1,4 +1,4 @@
-//Calling virtual function in constructor or destructor
+//Calling virtual function in constructor or destructor (avoid unless static function)
 
 #include<iostream>
 #include<memory>
