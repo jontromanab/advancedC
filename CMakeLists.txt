@@ -22,6 +22,7 @@ add_executable(casting1 src/casting1.cpp)
 add_executable(casting2 src/casting2.cpp)
 
 add_executable(debug1 src/debug1.cpp)
+add_executable(to_str_and_cstr src/to_str_and_cstr.cpp)
 
 
 add_executable(1_boost_macro src/1_boost_macro.cpp )
