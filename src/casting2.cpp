@@ -20,8 +20,8 @@ int main(){
   //yellowdog * py = dynamic_cast<yellowdog*>(pd);
   //yellowdog * py = static_cast<yellowdog*>(pd);
   yellowdog * py = dynamic_cast<yellowdog*>(pd);
-  //if(py)
-    //py->bark();
+  if(py)
+    py->bark();
   py->bark();
   cout<<"py = "<<py<<endl;
   cout<<"pd = "<<pd<<endl;
