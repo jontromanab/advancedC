@@ -24,6 +24,8 @@ add_executable(casting2 src/casting2.cpp)
 add_executable(debug1 src/debug1.cpp)
 add_executable(to_str_and_cstr src/to_str_and_cstr.cpp)
 
+add_executable(XorOperations src/XorOperations.cpp)
+add_executable(parallelize_program src/parallelize_program)
 
 add_executable(1_boost_macro src/1_boost_macro.cpp )
 target_link_libraries( 1_boost_macro LINK_PUBLIC ${Boost_LIBRARIES} )
@@ -65,3 +67,6 @@ target_link_libraries(10_boost_filesystem LINK_PUBLIC ${Boost_LIBRARIES}  -lboos
 
 add_executable(11_boost_uBLAS src/11_boost_uBLAS.cpp )
 target_link_libraries(11_boost_uBLAS LINK_PUBLIC ${Boost_LIBRARIES})
+
+
+
